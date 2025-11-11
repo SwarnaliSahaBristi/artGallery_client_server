@@ -1,5 +1,5 @@
-import React from "react";
-import logoImg from "../assets/ChatGPT Image Nov 11, 2025, 07_21_29 AM.png"
+import React, { useContext } from "react";
+import logoImg from "../assets/ChatGPT Image Nov 11, 2025, 07_21_29 AM.png";
 import { Link, NavLink } from "react-router";
 import { AiFillHome } from "react-icons/ai";
 import { MdExplore, MdFavorite } from "react-icons/md";
@@ -7,8 +7,23 @@ import { IoIosAddCircle } from "react-icons/io";
 import { TfiGallery } from "react-icons/tfi";
 import { GrGallery } from "react-icons/gr";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { AuthContext } from "../provider/AuthContext";
+import { toast } from "react-toastify";
+import Loader from "./Loader";
+import { FcLike } from "react-icons/fc";
 
 const Navbar = () => {
+  const { user, logOut, setUser, loading } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logout Successfully!!");
+        setUser(null);
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
   const [text] = useTypewriter({
     words: ["Artify", "Create", "Connect", "Curate"],
     loop: {}, // Loop indefinitely
@@ -38,7 +53,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/myFavourites" className="nav-link-item">
-          <MdFavorite />
+          <FcLike />
           My Favourites
         </NavLink>
       </li>
@@ -70,16 +85,20 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
-            <Link 
-          to='/addArtwork' 
-          className="btn btn-sm bg-green-500 text-white hover:bg-green-600 transition-colors shadow-lg flex items-center space-x-1"
-        >
-          <IoIosAddCircle className="text-xl" /> 
-          <span>Add Artwork</span> 
-        </Link>
+            <Link
+              to="/addArtwork"
+              className="btn btn-sm bg-green-500 text-white hover:bg-green-600 transition-colors shadow-lg flex items-center space-x-1"
+            >
+              <IoIosAddCircle className="text-xl" />
+              <span>Add Artwork</span>
+            </Link>
           </ul>
         </div>
-        <img src={logoImg} alt="Artify Logo Cube" className="h-20 w-15 mr-2 ml-4 md:ml-0" />
+        <img
+          src={logoImg}
+          alt="Artify Logo Cube"
+          className="h-20 w-15 mr-2 ml-4 md:ml-0"
+        />
         <Link to="/" className="font-bold text-lg text-purple-600 lg:text-2xl">
           <span className="logo-text">{text}</span>
           <Cursor cursorBlinking={true} cursorStyle="|" />
@@ -89,19 +108,46 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end flex gap-3">
-          <Link 
-          to='/addArtwork' 
+        <Link
+          to="/addArtwork"
           className="btn btn-sm bg-green-500 text-white hover:bg-green-600 transition-colors shadow-lg items-center space-x-1 hidden lg:flex"
         >
-          <IoIosAddCircle className="text-xl" /> 
-          <span>Add Artwork</span> 
+          <IoIosAddCircle className="text-xl" />
+          <span>Add Artwork</span>
         </Link>
-        <Link to="/login" className="btn button-gradient">
-          Login
-        </Link>
-        <Link to="/register" className="btn button-gradient">
-          Register
-        </Link>
+        <div>
+          {loading ? (
+            <div>Loading...</div>
+          ) : user ? (
+            <div className="flex gap-3 items-center">
+              <Link to="/profile">
+                <img
+                  className="rounded-full h-15 w-15 mx-auto"
+                  src={user?.photoURL || "http://www.profile.pic.com"}
+                  alt=""
+                />
+              </Link>
+              <button
+                className="btn button-gradient"
+                onClick={handleLogOut}
+              >
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-4">
+              <Link className="btn button-gradient" to="/login">
+                Login
+              </Link>
+              <Link
+                className="btn button-gradient"
+                to="/register"
+              >
+                Register
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
