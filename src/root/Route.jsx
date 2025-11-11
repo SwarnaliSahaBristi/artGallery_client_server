@@ -1,8 +1,46 @@
 import { createBrowserRouter } from "react-router";
+import MainLayout from "../layout/MainLayout";
+import Home from "../pages/Home";
+import ExploreArtworks from "../pages/ExploreArtworks";
+import AddArtwork from "../pages/AddArtwork";
+import MyGallery from "../pages/MyGallery";
+import MyFavourites from "../pages/MyFavourites";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello World</div>,
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/exploreArtworks',
+        element: <ExploreArtworks/>
+      },
+      {
+        path: '/addArtwork',
+        element: <AddArtwork></AddArtwork>
+      },
+      {
+        path: '/myGallery',
+        element: <MyGallery/>
+      },
+      {
+        path: '/myFavourites',
+        element: <MyFavourites/>
+      },
+      {
+        path: '/login',
+        element: <Login/>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      }
+    ],
   },
 ]);
