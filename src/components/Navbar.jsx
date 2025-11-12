@@ -85,10 +85,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
-            <Link
-              to="/addArtwork"
-              className="btn btn-sm bg-green-500 text-white hover:bg-green-600 transition-colors shadow-lg flex items-center space-x-1"
-            >
+            <Link to="/addArtwork" className="btn button-outline">
               <IoIosAddCircle className="text-xl" />
               <span>Add Artwork</span>
             </Link>
@@ -108,13 +105,12 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end flex gap-3">
-        <Link
-          to="/addArtwork"
-          className="btn btn-sm bg-green-500 text-white hover:bg-green-600 transition-colors shadow-lg items-center space-x-1 hidden lg:flex"
-        >
-          <IoIosAddCircle className="text-xl" />
-          <span>Add Artwork</span>
-        </Link>
+        <div className="">
+          <Link to="/addArtwork" className="btn button-outline hidden lg:flex">
+            <IoIosAddCircle className="text-xl" />
+            <span>Add Artwork</span>
+          </Link>
+        </div>
         <div>
           {loading ? (
             <div>Loading...</div>
@@ -127,10 +123,7 @@ const Navbar = () => {
                   alt=""
                 />
               </Link>
-              <button
-                className="btn button-gradient"
-                onClick={handleLogOut}
-              >
+              <button className="btn button-gradient" onClick={handleLogOut}>
                 Log Out
               </button>
             </div>
@@ -139,10 +132,7 @@ const Navbar = () => {
               <Link className="btn button-gradient" to="/login">
                 Login
               </Link>
-              <Link
-                className="btn button-gradient"
-                to="/register"
-              >
+              <Link className="btn button-gradient" to="/register">
                 Register
               </Link>
             </div>

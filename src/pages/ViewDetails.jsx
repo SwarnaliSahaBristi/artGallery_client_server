@@ -23,6 +23,10 @@ const ViewDetails = () => {
     });
   }, [axiosInstance, id]);
 
+  const handleLike = () =>{
+    
+  }
+
   if (loading) {
     return <Loader></Loader>;
   }
@@ -76,7 +80,7 @@ const ViewDetails = () => {
                 </div>
               </div>
               <div className="flex gap-3 mt-6">
-                <button className="btn button-outline">
+                <button onClick={handleLike} className="btn button-outline">
                   Like
                   <SlLike />
                 </button>
