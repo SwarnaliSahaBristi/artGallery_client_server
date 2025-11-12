@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       {
         path: '/viewDetails/:id',
         element: <ViewDetails></ViewDetails>,
-      }
+      },
     ],
   },
 ]);
