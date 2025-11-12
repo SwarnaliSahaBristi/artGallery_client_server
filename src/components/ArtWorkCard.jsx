@@ -1,8 +1,9 @@
 import React from 'react';
 import { SlLike } from 'react-icons/sl';
+import { Link } from 'react-router';
 
 const ArtWorkCard = ({artWork}) => {
-    const {imageUrl,title,category,userName,likesCount,userEmail}= artWork;
+    const {imageUrl,title,category,userName,likesCount,userEmail,_id}= artWork;
 
     return (
         <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
@@ -20,7 +21,7 @@ const ArtWorkCard = ({artWork}) => {
         <div className="text-xs text-secondary">Artist Email: : {userEmail}</div>
         <p className="btn button-outline">Liked By: {likesCount}<SlLike /></p>
         <div className="card-actions justify-between items-center mt-4">
-          <button className='btn button-gradient w-full'>View Details</button>
+          <Link to={`/viewDetails/${_id}`} className='btn button-gradient w-full'>View Details</Link>
         </div>
       </div>
     </div>

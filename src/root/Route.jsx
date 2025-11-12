@@ -7,6 +7,7 @@ import MyGallery from "../pages/MyGallery";
 import MyFavourites from "../pages/MyFavourites";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import ViewDetails from "../pages/ViewDetails";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/viewDetails/:id',
+        element: <ViewDetails></ViewDetails>,
       }
     ],
   },

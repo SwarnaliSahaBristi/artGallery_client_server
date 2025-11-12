@@ -42,8 +42,8 @@ const ExploreArtworks = () => {
   }
 
   if (searchPerformed && artWorks.length === 0) {
-        return <NotFound></NotFound>
-    }
+    return <NotFound></NotFound>;
+  }
 
   return (
     <div>
@@ -77,11 +77,16 @@ const ExploreArtworks = () => {
           {loading ? "Searching...." : "Search"}
         </button>
       </form>
-      <p className="text-center font-bold text-3xl py-4">
-        <Marquee>
-          🚀 Trending Now: Abstract art explodes with 300+ likes this week!
-        </Marquee>
+      <p className="text-center font-bold">
+        ({artWorks.length} Artworks found)
       </p>
+
+      <Marquee>
+        <p className="text-center font-bold text-3xl py-4">
+          🚀 Trending Now: Abstract art explodes with 300+ likes this week!
+        </p>
+      </Marquee>
+
       <Fade cascade damping={0.1} triggerOnce>
         <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
           {artWorks.map((artWork) => (
