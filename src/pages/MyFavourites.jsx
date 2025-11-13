@@ -3,6 +3,7 @@ import useAxios from "../hooks/useAxios";
 import { Link } from "react-router";
 import { SlLike } from "react-icons/sl";
 import { toast } from "react-toastify";
+import { FcLike } from "react-icons/fc";
 
 const MyFavourites = () => {
   const axiosInstance = useAxios();
@@ -15,19 +16,18 @@ const MyFavourites = () => {
     });
   }, [axiosInstance]);
 
-  const handleUnfavorite = (id) =>{
-        axiosInstance.delete(`/favorites/${id}`)
-        .then(data=>{
-            if(data.data.deletedCount > 0){
-                setArtWorks((prev)=> prev.filter((art) => art._id !== id))
-                toast.success("Removed from favorites!");
-            }
-        })
-  }
+  const handleUnfavorite = (id) => {
+    axiosInstance.delete(`/favorites/${id}`).then((data) => {
+      if (data.data.deletedCount > 0) {
+        setArtWorks((prev) => prev.filter((art) => art._id !== id));
+        toast.success("Removed from favorites!");
+      }
+    });
+  };
   return (
-    <div>
-      <h1 className="ml-10 text-8xl p-4">⭐FAVORITES</h1>
-      <p className="ml-130 p-5">
+    <div className="bg-[radial-gradient(circle_at_20%_30%,#ff6b6b_0%,transparent_50%)]">
+      <h1 className="ml-10 lg:text-8xl md:text-4xl p-4">⭐FAVORITES</h1>
+      <p className="lg:ml-130 p-5">
         Here you can find all your favorite artworks...
       </p>
       <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
@@ -41,7 +41,11 @@ const MyFavourites = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{artwork.title}</h2>
+              <div className="flex items-center justify-between">
+                <h2 className="card-title">{artwork.title}</h2>
+                <p><FcLike /></p>
+              </div>
+
               <div className="badge text-xs badge-xs badge-secondary rounded-full">
                 {artwork.category}
               </div>
@@ -51,12 +55,11 @@ const MyFavourites = () => {
               <div className="text-xs text-secondary">
                 Artist Email: : {artwork.userEmail}
               </div>
-              <p className="btn button-outline">
-                Liked By: {artwork.likesCount}
-                <SlLike />
-              </p>
               <div className="card-actions justify-between items-center mt-4">
-                <button onClick={()=>handleUnfavorite(artwork._id)} className="btn button-gradient w-full">
+                <button
+                  onClick={() => handleUnfavorite(artwork._id)}
+                  className="btn button-gradient w-full"
+                >
                   Unfavorite
                 </button>
               </div>

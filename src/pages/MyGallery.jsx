@@ -96,7 +96,8 @@ const MyGallery = () => {
   }
 
   return (
-    <div>
+    <div className="bg-[radial-gradient(circle_at_20%_30%,#ff6b6b_0%,transparent_50%)]">
+        <h1 className="text-lg text-center py-6">My <span className="text-8xl">Gallery</span></h1>
       <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
         {artWorks.map((artwork) => (
           <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
@@ -113,15 +114,8 @@ const MyGallery = () => {
                 {artwork.category}
               </div>
               <div className="text-xs text-secondary">
-                Artist Name:{artwork.userName}
-              </div>
-              <div className="text-xs text-secondary">
                 Artist Email: : {artwork.userEmail}
               </div>
-              <p className="btn button-outline">
-                Liked By: {artwork.likesCount}
-                <SlLike />
-              </p>
               <div className="card-actions justify-between items-center mt-4">
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
                 <button

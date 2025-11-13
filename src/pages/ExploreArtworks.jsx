@@ -70,7 +70,7 @@ const ExploreArtworks = () => {
   return (
     <div className="bg-[radial-gradient(circle_at_20%_30%,#ff6b6b_0%,transparent_50%)]">
       <h1 className="text-4xl font-extrabold text-center text-purple-500 py-8">
-        The Artwork <br /><span className="text-9xl">Collection</span>
+        The Artwork <br /><span className="lg:text-9xl ">Collection</span>
       </h1>
       <form
         onSubmit={handleSearch}
