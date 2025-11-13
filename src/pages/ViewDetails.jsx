@@ -3,6 +3,7 @@ import { SlLike } from "react-icons/sl";
 import useAxios from "../hooks/useAxios";
 import { Link, useParams } from "react-router";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 const ViewDetails = () => {
   const axiosInstance = useAxios();
@@ -23,9 +24,28 @@ const ViewDetails = () => {
     });
   }, [axiosInstance, id]);
 
-  const handleLike = () =>{
-    
-  }
+  const handleLike = () => {};
+
+  const handleFavorite = () => {
+    const favData = {
+      imageUrl: artWorks.imageUrl,
+      title: artWorks.title,
+      category: artWorks.category,
+      medium: artWorks.medium,
+      description: artWorks.description,
+      dimensions: artWorks.dimensions,
+      price: artWorks.price,
+      visibility: artWorks.visibility,
+      userName: artWorks.userName,
+      userEmail: artWorks.userEmail,
+      artistPhoto: artWorks.artistPhoto
+    };
+    axiosInstance.post("/favorites",favData)
+    .then((data) => {
+      console.log(data.data);
+      toast.success("Added to Favorites Successfully!!")
+    });
+  };
 
   if (loading) {
     return <Loader></Loader>;
@@ -59,24 +79,28 @@ const ViewDetails = () => {
               </div>
               <div className="flex gap-3">
                 <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                 {artWorks.dimensions}
+                  {artWorks.dimensions}
                 </div>
 
                 <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
                   Price: ${artWorks.price}
                 </div>
               </div>
-                <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                 {artWorks.description}
               </p>
               <div className="flex gap-4 items-center bg-gray-100 p-3 rounded-2xl">
                 <div>
-                    <img className="w-25 h-22 rounded-full object-cover" src={artWorks.artistPhoto} alt="" />
+                  <img
+                    className="w-25 h-22 rounded-full object-cover"
+                    src={artWorks.artistPhoto}
+                    alt=""
+                  />
                 </div>
                 <div className="font-semibold">
-                    <h2>{artWorks.userName}</h2>
-                    <p>{artWorks.userEmail}</p>
-                    <p>Total Art: {artWorks.totalArtworks}</p>
+                  <h2>{artWorks.userName}</h2>
+                  <p>{artWorks.userEmail}</p>
+                  <p>Total Art: {artWorks.totalArtworks}</p>
                 </div>
               </div>
               <div className="flex gap-3 mt-6">
@@ -84,9 +108,16 @@ const ViewDetails = () => {
                   Like
                   <SlLike />
                 </button>
-                <button className="btn button-outline">Add to Favorites</button>
+                <button onClick={handleFavorite} className="btn button-outline">
+                  Add to Favorites
+                </button>
               </div>
-              <Link to ='/exploreArtworks' className="btn button-gradient w-full">Back to Explore Artworks</Link>
+              <Link
+                to="/exploreArtworks"
+                className="btn button-gradient w-full"
+              >
+                Back to Explore Artworks
+              </Link>
             </div>
           </div>
         </div>
