@@ -23,6 +23,7 @@ const AddArtwork = () => {
       isFavorite: false,
       artistPhoto: user.photoURl,
       totalArtworks: 0,
+      createdAt: new Date(),
     };
     // console.log(formData)
     axiosInstance
