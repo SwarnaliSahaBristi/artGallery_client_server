@@ -24,7 +24,23 @@ const ViewDetails = () => {
     });
   }, [axiosInstance, id]);
 
-  const handleLike = () => {};
+  const handleLike = () => {
+    axiosInstance
+      .patch(`/arts/like/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          setArtWorks((prev) => ({
+            ...prev,
+            likesCount: (prev.likesCount || 0) + 1,
+          }));
+          toast.success("You liked this artwork!");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Something went wrong!");
+      });
+  };
 
   const handleFavorite = () => {
     const favData = {
@@ -38,12 +54,11 @@ const ViewDetails = () => {
       visibility: artWorks.visibility,
       userName: artWorks.userName,
       userEmail: artWorks.userEmail,
-      artistPhoto: artWorks.artistPhoto
+      artistPhoto: artWorks.artistPhoto,
     };
-    axiosInstance.post("/favorites",favData)
-    .then((data) => {
+    axiosInstance.post("/favorites", favData).then((data) => {
       console.log(data.data);
-      toast.success("Added to Favorites Successfully!!")
+      toast.success("Added to Favorites Successfully!!");
     });
   };
 
@@ -105,8 +120,8 @@ const ViewDetails = () => {
               </div>
               <div className="flex gap-3 mt-6">
                 <button onClick={handleLike} className="btn button-outline">
-                  Like
                   <SlLike />
+                  Like({artWorks.likesCount || 0})
                 </button>
                 <button onClick={handleFavorite} className="btn button-outline">
                   Add to Favorites

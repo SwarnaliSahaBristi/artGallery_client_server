@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logoImg from "../assets/ChatGPT Image Nov 11, 2025, 07_21_29 AM.png";
 import { Link, NavLink } from "react-router";
 import { AiFillHome } from "react-icons/ai";
@@ -14,6 +14,16 @@ import { FcLike } from "react-icons/fc";
 
 const Navbar = () => {
   const { user, logOut, setUser, loading } = useContext(AuthContext);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
+  useEffect(() => {
+    const html = document.querySelector('html')
+     html.setAttribute("data-theme", theme)
+     localStorage.setItem("theme", theme)
+  }, [theme])
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark": "light")
+  }
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -26,7 +36,7 @@ const Navbar = () => {
   };
   const [text] = useTypewriter({
     words: ["Artify", "Create", "Connect", "Curate"],
-    loop: {}, // Loop indefinitely
+    loop: {},
     typeSpeed: 120,
     deleteSpeed: 50,
     delaySpeed: 1000,
@@ -91,11 +101,19 @@ const Navbar = () => {
             </Link>
           </ul>
         </div>
-        <img
+        <div>
+            <img
           src={logoImg}
           alt="Artify Logo Cube"
-          className="h-20 w-15 mr-2 ml-4 md:ml-0"
+          className="h-20 w-15"
         />
+        <input
+           onChange={(e)=> handleTheme(e.target.checked)}
+           type="checkbox"
+           defaultChecked={localStorage.getItem('theme') === "dark"}
+           className="toggle"/>
+        </div>
+
         <Link to="/" className="font-bold text-lg text-purple-600 lg:text-2xl">
           <span className="logo-text">{text}</span>
           <Cursor cursorBlinking={true} cursorStyle="|" />

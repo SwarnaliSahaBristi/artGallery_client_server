@@ -46,9 +46,9 @@ const ExploreArtworks = () => {
   }
 
   return (
-    <div>
+    <div className="bg-[radial-gradient(circle_at_20%_30%,#ff6b6b_0%,transparent_50%)] pointer-events-none">
       <h1 className="text-4xl font-extrabold text-center text-purple-500 py-8">
-        The Artwork Collection
+        The Artwork <br /><span className="text-9xl">Collection</span>
       </h1>
       <form
         onSubmit={handleSearch}
