@@ -105,15 +105,7 @@ const Navbar = () => {
             </Link>
           </ul>
         </div>
-        <div>
-          <img src={logoImg} alt="Artify Logo Cube" className="h-20 w-15" />
-          <input
-            onChange={(e) => handleTheme(e.target.checked)}
-            type="checkbox"
-            defaultChecked={localStorage.getItem("theme") === "dark"}
-            className="toggle"
-          />
-        </div>
+        <img src={logoImg} alt="Artify Logo Cube" className="h-20 w-15" />
 
         <Link to="/" className="font-bold text-lg text-purple-600 lg:text-2xl">
           <span className="logo-text">{text}</span>
@@ -124,29 +116,46 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end flex gap-3">
-        {
-            user && <div className="">
-          <Link to="/addArtwork" className="btn button-outline hidden lg:flex">
-            <IoIosAddCircle className="text-xl" />
-            <span>Add Artwork</span>
-          </Link>
-        </div>
-        }
+        {user && (
+          <div className="">
+            <Link
+              to="/addArtwork"
+              className="btn button-outline hidden lg:flex"
+            >
+              <IoIosAddCircle className="text-xl" />
+              <span>Add Artwork</span>
+            </Link>
+          </div>
+        )}
         <div>
           {loading ? (
             <div>Loading...</div>
           ) : user ? (
-            <div className="flex gap-3 items-center">
-              <Link to="/profile">
-                <img
-                  className="rounded-full h-15 w-15 mx-auto"
-                  src={user?.photoURL || "http://www.profile.pic.com"}
-                  alt=""
-                />
-              </Link>
-              <button className="btn button-gradient" onClick={handleLogOut}>
-                Log Out
-              </button>
+            <div className="relative group">
+              <img
+                src={user.photoURL || "http://www.profile.pic.com"}
+                alt={user.displayName || "User"}
+                className="rounded-full h-12 w-12 cursor-pointer border-2 border-purple-500"
+              />
+              <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                <div className="p-4 flex flex-col items-center gap-2">
+                  <p className="font-semibold text-gray-800">
+                    {user.displayName}
+                  </p>
+                  <input
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem("theme") === "dark"}
+                    className="toggle"
+                  />
+                  <button
+                    onClick={handleLogOut}
+                    className="btn button-gradient w-full text-center"
+                  >
+                    Log Out
+                  </button>
+                </div>
+              </div>
             </div>
           ) : (
             <div className="flex gap-4">
