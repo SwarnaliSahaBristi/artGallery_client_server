@@ -4,8 +4,10 @@ import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthContext";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
+import Usetitle from "../components/Usetitle";
 
 const Login = () => {
+    Usetitle("Login")
   const { signIn, googleSignin } = useContext(AuthContext);
   const [show, setShow] = useState(false);
 

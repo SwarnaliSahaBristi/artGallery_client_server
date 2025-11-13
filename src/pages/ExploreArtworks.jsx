@@ -5,8 +5,10 @@ import ArtWorkCard from "../components/ArtWorkCard";
 import { Fade } from "react-awesome-reveal";
 import Marquee from "react-fast-marquee";
 import NotFound from "./NotFound";
+import Usetitle from "../components/Usetitle";
 
 const ExploreArtworks = () => {
+     Usetitle("Explore Artworks")
   const [artWorks, setArtWorks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("");

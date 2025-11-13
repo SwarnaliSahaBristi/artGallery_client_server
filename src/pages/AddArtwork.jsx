@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
+import Usetitle from "../components/Usetitle";
 
 const AddArtwork = () => {
+     Usetitle("Add Artworks")
   const { user } = useContext(AuthContext);
   const axiosInstance = useAxios();
   const handleSubmit = (e) => {

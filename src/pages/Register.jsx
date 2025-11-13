@@ -4,8 +4,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { toast } from "react-toastify";
 import { Eye, EyeOff } from "lucide-react";
+import Usetitle from "../components/Usetitle";
 
 const Register = () => {
+    Usetitle("Register")
   const { register, updateUserProfile, googleSignin } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");

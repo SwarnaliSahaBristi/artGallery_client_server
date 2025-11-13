@@ -4,8 +4,10 @@ import { Link } from "react-router";
 import { SlLike } from "react-icons/sl";
 import { toast } from "react-toastify";
 import { FcLike } from "react-icons/fc";
+import Usetitle from "../components/Usetitle";
 
 const MyFavourites = () => {
+    Usetitle("My Favorites")
   const axiosInstance = useAxios();
   const [artWorks, setArtWorks] = useState([]);
 

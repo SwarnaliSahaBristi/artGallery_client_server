@@ -5,8 +5,10 @@ import Loader from "../components/Loader";
 import { SlLike } from "react-icons/sl";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import Usetitle from "../components/Usetitle";
 
 const MyGallery = () => {
+    Usetitle("My Gallery")
   const axiosInstance = useAxios();
   const { user } = useContext(AuthContext);
   const [artWorks, setArtWorks] = useState([]);

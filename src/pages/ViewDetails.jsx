@@ -4,8 +4,10 @@ import useAxios from "../hooks/useAxios";
 import { Link, useParams } from "react-router";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
+import Usetitle from "../components/Usetitle";
 
 const ViewDetails = () => {
+    Usetitle("View Details")
   const axiosInstance = useAxios();
   const [artWorks, setArtWorks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -79,7 +81,7 @@ const ViewDetails = () => {
             </div>
 
             <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">
                 {artWorks.title}
               </h1>
 
@@ -112,7 +114,7 @@ const ViewDetails = () => {
                     alt=""
                   />
                 </div>
-                <div className="font-semibold">
+                <div className="font-semibold dark:text-black">
                   <h2>{artWorks.userName}</h2>
                   <p>{artWorks.userEmail}</p>
                   <p>Total Art: {artWorks.totalArtworks}</p>

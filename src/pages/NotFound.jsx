@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import Usetitle from "../components/Usetitle";
 
 const NotFound = () => {
+    Usetitle("NotFound")
   return (
     <div className="text-center py-20">
       <h1 className="text-4xl font-extrabold text-red-600 mb-4">

@@ -1,8 +1,10 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
+import Usetitle from "../components/Usetitle";
 
 const ErrorPage = () => {
+    Usetitle("404 Error Page")
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-500 via-pink-500 to-yellow-400 text-white p-4">
       <h1 className="text-9xl font-extrabold drop-shadow-lg">404</h1>

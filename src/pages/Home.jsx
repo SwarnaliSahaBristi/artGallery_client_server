@@ -5,8 +5,10 @@ import FeaturedArtwork from '../components/FeaturedArtwork';
 import EventsAndPrograms from '../components/EventsAndPrograms';
 import ArtistWeek from '../components/ArtistWeek';
 import JoinCommunity from '../components/JoinCommunity';
+import Usetitle from '../components/Usetitle';
 
 const Home = () => {
+    Usetitle("Home")
     return (
         <div>
             <Banner></Banner>
