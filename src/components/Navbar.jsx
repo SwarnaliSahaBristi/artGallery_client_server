@@ -14,16 +14,16 @@ import { FcLike } from "react-icons/fc";
 
 const Navbar = () => {
   const { user, logOut, setUser, loading } = useContext(AuthContext);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   useEffect(() => {
-    const html = document.querySelector('html')
-     html.setAttribute("data-theme", theme)
-     localStorage.setItem("theme", theme)
-  }, [theme])
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleTheme = (checked) => {
-    setTheme(checked ? "dark": "light")
-  }
+    setTheme(checked ? "dark" : "light");
+  };
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -55,18 +55,22 @@ const Navbar = () => {
           Explore Artworks
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/myGallery" className="nav-link-item">
-          <GrGallery />
-          My Gallery
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/myFavourites" className="nav-link-item">
-          <FcLike />
-          My Favourites
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/myGallery" className="nav-link-item">
+              <GrGallery />
+              My Gallery
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/myFavourites" className="nav-link-item">
+              <FcLike />
+              My Favourites
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -102,16 +106,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-            <img
-          src={logoImg}
-          alt="Artify Logo Cube"
-          className="h-20 w-15"
-        />
-        <input
-           onChange={(e)=> handleTheme(e.target.checked)}
-           type="checkbox"
-           defaultChecked={localStorage.getItem('theme') === "dark"}
-           className="toggle"/>
+          <img src={logoImg} alt="Artify Logo Cube" className="h-20 w-15" />
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
         </div>
 
         <Link to="/" className="font-bold text-lg text-purple-600 lg:text-2xl">
@@ -123,12 +124,14 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end flex gap-3">
-        <div className="">
+        {
+            user && <div className="">
           <Link to="/addArtwork" className="btn button-outline hidden lg:flex">
             <IoIosAddCircle className="text-xl" />
             <span>Add Artwork</span>
           </Link>
         </div>
+        }
         <div>
           {loading ? (
             <div>Loading...</div>

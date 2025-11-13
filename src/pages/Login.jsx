@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthContext";
 import { Eye, EyeOff } from "lucide-react";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { signIn, googleSignin } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success('Login Successfully!')
         event.target.reset();
         navigate(location.state || "/");
       })
@@ -33,6 +35,7 @@ const Login = () => {
     googleSignin()
       .then((result) => {
         console.log(result.user);
+        toast.success('Login Successfully!')
         navigate(location?.state || "/");
       })
       .catch((error) => {

@@ -32,6 +32,7 @@ const Register = () => {
         console.log(result.user);
         updateUserProfile(displayName, photoURL);
         toast.success("User created successfully!", { id: "create-user" });
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -64,6 +65,7 @@ const Register = () => {
             <input
               type="text"
               name="displayName"
+              required
               className="input rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Name"
             />
@@ -72,6 +74,7 @@ const Register = () => {
             <input
               type="text"
               name="photoURL"
+              required
               className="input rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Photo URL"
             />
@@ -80,6 +83,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
+              required
               className="input rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Email"
             />

@@ -9,6 +9,7 @@ import NotFound from "./NotFound";
 const ExploreArtworks = () => {
   const [artWorks, setArtWorks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState("");
   const [searchPerformed, setSearchPerformed] = useState(false);
   const axiosInstance = useAxios();
   useEffect(() => {
@@ -35,6 +36,27 @@ const ExploreArtworks = () => {
       setArtWorks(data.data);
       setLoading(false);
     });
+  };
+
+  const fetchArtworks = async (selectedCategory = "") => {
+  try {
+    setLoading(true);
+    const res = await axiosInstance.get("/arts", {
+      params: { category: selectedCategory || undefined },
+    });
+    setArtWorks(res.data);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+  const handleCategoryChange = (e) => {
+    const selected = e.target.value;
+    setCategory(selected);
+    fetchArtworks(selected);
   };
 
   if (loading) {
@@ -76,6 +98,20 @@ const ExploreArtworks = () => {
         <button className="btn button-gradient rounded-full">
           {loading ? "Searching...." : "Search"}
         </button>
+        <div className="flex justify-center mb-10">
+        <select
+          value={category}
+          onChange={handleCategoryChange}
+          className="border-2 border-purple-400 rounded-full px-6 py-2 font-semibold text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        >
+          <option value="">All Categories</option>
+          <option value="Painting">Painting</option>
+          <option value="Drawing">Drawing</option>
+          <option value="Sculpture">Sculpture</option>
+          <option value="Photography">Photography</option>
+          <option value="Digital Art">Digital Art</option>
+        </select>
+      </div>
       </form>
       <p className="text-center font-bold">
         ({artWorks.length} Artworks found)
