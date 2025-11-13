@@ -59,7 +59,7 @@ const ViewDetails = () => {
       artistPhoto: artWorks.artistPhoto,
     };
     axiosInstance.post("/favorites", favData).then((data) => {
-      console.log(data.data);
+    //   console.log(data.data);
       toast.success("Added to Favorites Successfully!!");
     });
   };

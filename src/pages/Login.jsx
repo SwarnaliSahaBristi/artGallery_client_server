@@ -13,35 +13,35 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+//   console.log(location);
 
   const handleLogIn = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    console.log(email, password);
+    // console.log(email, password);
     signIn(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         toast.success('Login Successfully!')
         event.target.reset();
         navigate(location.state || "/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
   const handleGoogleSignIn = () => {
     googleSignin()
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         toast.success('Login Successfully!')
         navigate(location?.state || "/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 

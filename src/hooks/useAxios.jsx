@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: "https://art-gallery-server-brown.vercel.app",
 });
 
 axiosInstance.interceptors.request.use(async (config) => {
@@ -17,8 +17,8 @@ axiosInstance.interceptors.request.use(async (config) => {
   return config;
 });
 
-const useAxios = () =>{
-    return axiosInstance;
-}
+const useAxios = () => {
+  return axiosInstance;
+};
 
 export default useAxios;

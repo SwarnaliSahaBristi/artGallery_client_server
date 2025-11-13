@@ -17,7 +17,7 @@ const MyGallery = () => {
 
   useEffect(() => {
     axiosInstance.get(`/my-gallery?email=${user.email}`).then((data) => {
-      console.log(data.data);
+    //   console.log(data.data);
       setArtWorks(data.data);
       setLoading(false);
     });
@@ -75,7 +75,7 @@ const MyGallery = () => {
       if (result.isConfirmed) {
         axiosInstance.delete(`/arts/${artworkId}`)
           .then((data) => {
-            console.log(data.data);
+            // console.log(data.data);
             setArtWorks((prev) => prev.filter((a) => a._id !== artworkId));
             // navigate("/all-models");
 
@@ -86,7 +86,7 @@ const MyGallery = () => {
             });
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
       }
     });

@@ -31,13 +31,13 @@ const Register = () => {
 
     register(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         updateUserProfile(displayName, photoURL);
         toast.success("User created successfully!", { id: "create-user" });
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         toast.error(error.message, { id: "create-user" });
       });
   };
@@ -47,11 +47,11 @@ const Register = () => {
     googleSignin()
       .then((result) => {
         toast.success("User created successfully!", { id: "create-user" });
-        console.log(result.user);
+        // console.log(result.user);
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         toast.error(error.message, { id: "create-user" });
       });
   };

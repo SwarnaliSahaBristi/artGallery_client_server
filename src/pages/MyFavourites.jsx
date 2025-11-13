@@ -13,7 +13,7 @@ const MyFavourites = () => {
 
   useEffect(() => {
     axiosInstance.get("/favorites").then((data) => {
-      console.log(data.data);
+    //   console.log(data.data);
       setArtWorks(data.data);
     });
   }, [axiosInstance]);
