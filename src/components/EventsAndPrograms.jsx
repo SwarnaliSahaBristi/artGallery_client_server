@@ -8,7 +8,7 @@ const EventsAndPrograms = () => {
   return (
     <div>
       <h1 className="text-8xl text-center py-5">Exhibitions</h1>
-      <div className="flex gap-6 p-16">
+      <div className="flex gap-6 p-16 flex-col md:flex-row">
         <div>
           <img src={monalisa} className="h-[400px] w-[750px]" alt="" />
         </div>
@@ -24,7 +24,7 @@ const EventsAndPrograms = () => {
           </p>
         </div>
       </div>
-      <div className="flex gap-6 p-16">
+      <div className="flex gap-6 p-16 flex-col md:flex-row">
         <div className="mt-56">
           <h1 className="text-5xl">The Lady in Red</h1>
           <p>
@@ -38,7 +38,7 @@ const EventsAndPrograms = () => {
           <img className="h-[400px] w-[750px]" src={womanInRed} alt="" />
         </div>
       </div>
-      <div className="flex gap-6 p-16">
+      <div className="flex gap-6 p-16 flex-col md:flex-row">
         <div>
           <img src={womanStiching} className="h-[400px] w-[750px]" alt="" />
         </div>
@@ -53,7 +53,7 @@ const EventsAndPrograms = () => {
           </p>
         </div>
       </div>
-      <div className="flex gap-6 p-16">
+      <div className="flex gap-6 p-16 flex-col md:flex-row">
         <div className="mt-56">
           <h1 className="text-5xl">The Arnolfini Portrait</h1>
           <p>

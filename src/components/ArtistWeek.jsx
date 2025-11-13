@@ -9,7 +9,7 @@ import smile from '../assets/gettyimages-1752533660-640x640.jpg'
 
 const ArtistWeek = () => {
     return (
-        <div className='p-10'>
+        <div className='py-10'>
             <h1 className='text-center text-8xl py-7'>Top Artists <span className='text-lg'>of the week</span></h1>
             <Marquee>
                 <div className='flex gap-15'>

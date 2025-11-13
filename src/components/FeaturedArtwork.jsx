@@ -17,7 +17,7 @@ const FeaturedArtwork = () => {
       <h1 className="text-7xl text-center py-6">
         Featured <span className="text-xl">Artworks</span>
       </h1>
-      <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
+      <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
         {artWorks.map((artWork) => (
           <ArtWorkCard key={artWork._id} artWork={artWork}></ArtWorkCard>
         ))}
