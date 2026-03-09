@@ -1,7 +1,6 @@
 # 🎨 ARTIFY – A CREATIVE ARTWORK SHOWCASE PLATFORM
 
-**Live Site URL:** [https://artify-client-d71f6.web.app/](https://artify-client-d71f6.web.app/)
-
+**Live Site URL:** (https://artify22.netlify.app/)
 ---
 
 ## 🌟 Features
