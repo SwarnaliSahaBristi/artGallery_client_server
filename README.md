@@ -1,31 +1,115 @@
-# 🎨 ARTIFY – A CREATIVE ARTWORK SHOWCASE PLATFORM
+# 🎨 ARTIFY – Client (Frontend)
 
-**Live Site URL:** (https://artify22.netlify.app/)
----
-
-## 🌟 Features
-
-- 🖼️ **Dynamic Art Gallery:** Explore a diverse collection of artworks fetched dynamically from the server.  
-- 🔍 **Artwork Details Page:** Each artwork includes complete details like artist info, title, and description.  
-- ❤️ **Interactive User Experience:** Like artworks, explore categories, and enjoy smooth animations and transitions.  
-- 💫 **Modern Responsive Design:** Built with Tailwind CSS and DaisyUI for a sleek, mobile-friendly interface.  
-- 🔔 **Real-Time Notifications:** Get instant alerts and feedback using React Toastify and SweetAlert2.  
+🔗 **Live Site:** https://artify22.netlify.app/
 
 ---
 
-## 🛠️ Technologies & Dependencies
+## 🌟 Overview
 
-| Category | Tools / Libraries |
-|-----------|------------------|
-| **Frontend Framework** | React ^19.1.1, React DOM ^19.1.1 |
-| **Styling & UI** | Tailwind CSS ^4.1.17, DaisyUI ^5.4.7 |
-| **Routing** | React Router ^7.9.5 |
-| **Server Communication** | Axios ^1.13.2 |
-| **Animations & Effects** | React Awesome Reveal ^4.3.1, React Fast Marquee ^1.6.5, React Simple Typewriter ^5.0.1 |
-| **Icons & Gallery** | React Icons ^5.5.0, Lucide React ^0.553.0, React Image Gallery ^1.4.0 |
-| **Notifications & Tooltips** | React Toastify ^11.0.5, React Tooltip ^5.30.0, SweetAlert2 ^11.26.3 |
-| **Hosting & Auth** | Firebase ^12.5.0 |
-| **Development Tools** | @tailwindcss/vite ^4.1.17 |
+ARTIFY is a modern artwork showcase platform where users can explore, interact with, and enjoy creative artworks in a visually engaging environment.
 
 ---
 
+## ✨ Features
+
+* 🖼️ Dynamic artwork gallery
+* 🔍 Detailed artwork pages
+* ❤️ Like & interaction system
+* 📱 Fully responsive design
+* 🔔 Real-time notifications
+* 🎨 Smooth animations and transitions
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework:** React
+* **Styling:** Tailwind CSS, DaisyUI
+* **Routing:** React Router
+* **HTTP Client:** Axios
+* **Animations:** React Awesome Reveal, React Fast Marquee
+* **Icons:** React Icons, Lucide React
+* **Notifications:** React Toastify, SweetAlert2
+* **Authentication:** Firebase
+
+---
+
+## 📁 Project Setup
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone <your-client-repo-link>
+cd client
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Setup Environment Variables
+
+Create a `.env` file in the root:
+
+```env
+VITE_API_URL=http://localhost:5000
+
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+⚠️ **Important:**
+
+* Never commit your `.env` file
+* Use `.env.example` for sharing structure
+
+---
+
+### 4️⃣ Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 📌 Folder Structure (Example)
+
+```
+src/
+ ├── components/
+ ├── pages/
+ ├── hooks/
+ ├── routes/
+ ├── providers/
+ └── assets/
+```
+
+---
+
+## 🚀 Deployment
+
+* Hosted on **Netlify**
+* Ensure environment variables are added in Netlify dashboard
+
+---
+
+## 🤝 Contribution
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+---
