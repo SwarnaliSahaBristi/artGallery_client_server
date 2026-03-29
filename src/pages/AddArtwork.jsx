@@ -3,11 +3,14 @@ import { AuthContext } from "../provider/AuthContext";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import Usetitle from "../components/Usetitle";
+import { useNavigate } from "react-router";
 
 const AddArtwork = () => {
      Usetitle("Add Artworks")
   const { user } = useContext(AuthContext);
   const axiosInstance = useAxios();
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
@@ -30,7 +33,7 @@ const AddArtwork = () => {
     // console.log(formData)
     axiosInstance
       .post("/arts", formData)
-      .then((data) => {
+      .then(() => {
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -38,14 +41,23 @@ const AddArtwork = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        // console.log(data.data);
+
+        // Redirect after short delay
+        setTimeout(() => {
+          navigate("/exploreArtworks"); // <-- redirect to Explore Artworks page
+        }, 1600);
       })
       .catch((err) => {
-        // console.log(err);
+        console.error(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Artwork not added.",
+        });
       });
   };
   return (
-    <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
+    <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10 mb-10">
       <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center mb-6">Add New Artwork</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SlLike } from "react-icons/sl";
 import useAxios from "../hooks/useAxios";
 import { Link, useParams } from "react-router";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 import Usetitle from "../components/Usetitle";
+import { AuthContext } from "../provider/AuthContext";
 
 const ViewDetails = () => {
     Usetitle("View Details")
   const axiosInstance = useAxios();
+  const {user} = useContext(AuthContext)
   const [artWorks, setArtWorks] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -54,10 +56,11 @@ const ViewDetails = () => {
       dimensions: artWorks.dimensions,
       price: artWorks.price,
       visibility: artWorks.visibility,
-      userName: artWorks.userName,
-      userEmail: artWorks.userEmail,
+      userName: user.displayName,
+      userEmail: user.email,
       artistPhoto: artWorks.artistPhoto,
     };
+    console.log(user)
     axiosInstance.post("/favorites", favData).then((data) => {
     //   console.log(data.data);
       toast.success("Added to Favorites Successfully!!");

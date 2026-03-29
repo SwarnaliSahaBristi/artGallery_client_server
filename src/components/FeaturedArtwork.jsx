@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import useAxios from "../hooks/useAxios";
 import ArtWorkCard from "./ArtWorkCard";
-import { Link } from "react-router";
+import { Link } from "react-router";;
+import ExploreArtworksSkeleton from "./Skeleton/ExploreArtworksSkeleton";
 
 const FeaturedArtwork = () => {
   const axiosInstance = useAxios();
   const [artWorks, setArtWorks] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axiosInstance.get("/featured-arts").then((data) => {
-      // console.log(data.data)
       setArtWorks(data.data);
+      setLoading(false);
     });
-  });
+  }, []);
+  if (loading) {
+    return <ExploreArtworksSkeleton />;
+  }
   return (
     <div>
       <h1 className="text-7xl text-center py-6">
@@ -23,7 +28,9 @@ const FeaturedArtwork = () => {
         ))}
       </div>
       <div className="flex justify-center items-center py-8">
-        <Link to='/exploreArtworks' className="btn button-outline">Explore More</Link>
+        <Link to="/exploreArtworks" className="btn button-outline">
+          Explore More
+        </Link>
       </div>
     </div>
   );

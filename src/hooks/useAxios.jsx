@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 
 const axiosInstance = axios.create({
   baseURL: "https://art-gallery-server-brown.vercel.app",
+  // baseURL: "http://localhost:3000",
 });
 
 axiosInstance.interceptors.request.use(async (config) => {
